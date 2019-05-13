@@ -1,0 +1,26 @@
+{
+  "name": "xoom-graphql-workshop",
+  "description": "",
+  "dependencies": {
+    "apollo-datasource-rest": "^0.4.0",
+    "apollo-server": "^2.5.0",
+    "graphql": "^14.3.0"
+  },
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js localhost 4000"
+  },
+  "keywords": [],
+  "devDependencies": {
+    "@types/graphql": "^14.0.1",
+    "husky": "^2.2.0",
+    "nodemon": "^1.18.4",
+    "prettier": "^1.17.0",
+    "pretty-quick": "^1.10.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged"
+    }
+  }
+}
