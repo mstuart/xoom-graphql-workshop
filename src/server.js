@@ -5,7 +5,10 @@ const client = axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com'
 });
 
-const get = async url => client.get(url).then(({ data }) => data);
+const get = url => {
+  console.log(`${url} is being requested!`);
+  return client.get(url).then(({ data }) => data);
+};
 
 const typeDefs = `
   type Query {
@@ -27,7 +30,7 @@ const typeDefs = `
     user: User
 
     # The User ID that is associated this album
-    userId: ID @deprecated(reason: "'userId' is not that useful. Use 'user' instead.")
+    userId: ID @deprecated
   }
 
   type User {
@@ -119,10 +122,25 @@ const resolvers = {
   Album: {
     albumId: ({ id }) => id,
 
-    // NOTE: This is only ever invoked if a "user" field is requested.
+    // EXERCISE #4 -- Oops, we have a problem!
+    // We're causing unnecessary pressure on the https://jsonplaceholder.typicode.com API.
+    // Surprised they haven't shut us off yet :-)
     //
-    // If you offered this capability in REST, you would pay the cost of
-    // resolving "user" whether or not your client actually needed that field.
+    // See the console.log line on line 9 (up above).
+    // Go back to GraphQL Playground and request all albums (no arguments) with their associated users.
+    // Now, check your console for the console.log() message.
+    // 💩!  We're making the same API call a bunch of times!
+    //
+    // Part #1 --
+    // We need to dedupe these API calls.
+    // There are a couple options out there, but let's create an Apollo data source.
+    // Apollo data sources will dedupe API calls to ensure we're always fetching efficiently.
+    // Follow the docs at https://www.apollographql.com/docs/apollo-server/features/data-sources
+    //
+    // Once you are using your new data source, use it and uncomment the console.log() line at line 9 again (up above).
+    // If it's working properly, you'll see that we no longer overfetch.
+    //
+    // Sweet!  Now we're fetching optimally.  We are so cool!  Wow!  :-D
     user: async ({ userId }) => await get(`/users/${userId}`)
   },
 
