@@ -9,7 +9,7 @@ In this session, we will build a GraphQL server based on the [Movie DB REST API]
 
 ### Running on CodeSandbox
 
-[![Edit graphql-server-workshop](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mstuart/xoom-graphql-workshop/tree/01-apollo-server/?fontsize=14)
+[![Edit graphql-server-workshop](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mstuart/xoom-graphql-workshop/tree/03-deprecated-solution/?fontsize=14)
 
 1. Click the button above to navigate to the CodeSandbox. Fork it to your account by clicking Fork in the top menu.
 2. That's it! CodeSandbox features HMR, a console, and a test runner. It's pretty awesome. 😍 If you see an error message, don't worry - it's because we haven't built our server yet.
