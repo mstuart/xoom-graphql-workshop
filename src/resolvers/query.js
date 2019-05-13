@@ -18,6 +18,8 @@ module.exports = {
     // By returning it, it's available to Movie resolvers as "rootObj".
     // "rootObj" is used for passing data from parent-to-child.
     //
+    // See src/resolvers/movie.js for the Movie resolvers
+    //
     movies: async (root, args, context, info) => {
       const { results } = await get('/discover/movie');
 
