@@ -27,7 +27,7 @@ const typeDefs = `
     user: User
 
     # The User ID that is associated this album
-    userId: ID @deprecated
+    userId: ID @deprecated(reason: "'userId' is not that useful. Use 'user' instead.")
   }
 
   type User {
