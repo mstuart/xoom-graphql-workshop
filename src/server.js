@@ -1,5 +1,6 @@
 const { ApolloServer } = require('apollo-server');
 const axios = require('axios');
+const DataLoader = require('dataloader');
 
 const client = axios.create({
   baseURL: 'https://jsonplaceholder.typicode.com'
@@ -9,6 +10,10 @@ const get = url => {
   console.log(`${url} is being requested!`);
   return client.get(url).then(({ data }) => data);
 };
+
+const dataLoader = new DataLoader(urls =>
+  Promise.all(urls.map(url => get(url)))
+);
 
 const typeDefs = `
   type Query {
