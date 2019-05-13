@@ -1,19 +1,5 @@
 const { ApolloServer } = require('apollo-server');
-const axios = require('axios');
-const DataLoader = require('dataloader');
-
-const client = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com'
-});
-
-const get = url => {
-  console.log(`${url} is being requested!`);
-  return client.get(url).then(({ data }) => data);
-};
-
-const dataLoader = new DataLoader(urls =>
-  Promise.all(urls.map(url => get(url)))
-);
+const JSONPlaceholderAPI = require('./JSONPlaceholderAPI');
 
 const typeDefs = `
   type Query {
@@ -103,8 +89,8 @@ const typeDefs = `
 
 const resolvers = {
   Query: {
-    albums: async (rootObj, { albumId, userId }) => {
-      const albums = await dataLoader.load('/albums');
+    albums: async (rootObj, { albumId, userId }, { dataSources }) => {
+      const albums = await dataSources.jsonPlaceholderAPI.getAlbums();
 
       if (albumId) {
         return albums.filter(album => album.id === Number(albumId));
@@ -117,8 +103,8 @@ const resolvers = {
       return albums;
     },
 
-    album: async (rootObj, { albumId }) => {
-      const albums = await dataLoader.load('/albums');
+    album: async (rootObj, { albumId }, { dataSources }) => {
+      const albums = await dataSources.jsonPlaceholderAPI.getAlbums();
 
       return albums.find(album => album.id === Number(albumId));
     }
@@ -127,7 +113,8 @@ const resolvers = {
   Album: {
     albumId: ({ id }) => id,
 
-    user: async ({ userId }) => await dataLoader.load(`/users/${userId}`)
+    user: async ({ userId }, args, { dataSources }) =>
+      await dataSources.jsonPlaceholderAPI.getUserById(userId)
   },
 
   User: {
@@ -151,7 +138,13 @@ const resolvers = {
   }
 };
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  dataSources: () => ({
+    jsonPlaceholderAPI: new JSONPlaceholderAPI()
+  })
+});
 
 server
   .listen()
