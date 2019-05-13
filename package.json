@@ -1,6 +1,6 @@
 {
   "name": "xoom-graphql-workshop",
-  "description": "",
+  "description": "GraphQL Workshop at Xoom - May 13-14, 2019",
   "dependencies": {
     "apollo-datasource-rest": "^0.4.0",
     "apollo-server": "^2.5.0",
