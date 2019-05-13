@@ -2,9 +2,8 @@ const axios = require('axios');
 
 const client = axios.create({
   baseURL: 'https://api.themoviedb.org/3',
-  headers: {
-    api_key: 'da7c1cb04f4c3e1c0834802d529f1bf8',
-    include_adult: false
+  params: {
+    api_key: 'da7c1cb04f4c3e1c0834802d529f1bf8'
   }
 });
 
@@ -20,9 +19,7 @@ module.exports = {
     // "rootObj" is used for passing data from parent-to-child.
     //
     movies: async (root, args, context, info) => {
-      const { results } = await get(
-        '/discover/movie?api_key=da7c1cb04f4c3e1c0834802d529f1bf8'
-      );
+      const { results } = await get('/discover/movie');
 
       return results;
     }
