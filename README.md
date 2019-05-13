@@ -34,7 +34,7 @@ $ open http://localhost:4000
 
 ### Branches
 
-If you get stuck at any time, click the sandbox for the exercise you want and fork it.
+If you get stuck at any time, click the sandbox for the exercise you want and fork it. Every step has a problem and solution branch.
 
 - [`00-tour`](https://codesandbox.io/s/github/mstuart/xoom-graphql-workshop/tree/00-tour): Tour of Apollo Server
 - [`01-apollo-server`](https://codesandbox.io/s/github/mstuart/xoom-graphql-workshop/tree/01-apollo-server): Setting up Apollo Server
