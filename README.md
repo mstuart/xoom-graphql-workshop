@@ -9,7 +9,7 @@ In this session, we will build a GraphQL server based on the [Movie DB REST API]
 
 ### Running on CodeSandbox
 
-[![Edit graphql-server-workshop](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mstuart/xoom-graphql-workshop/tree/01-apollo-server/?fontsize=14)
+[![Edit graphql-server-workshop](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/s/github/mstuart/xoom-graphql-workshop/tree/01-resolver-practice/?fontsize=14)
 
 1. Click the button above to navigate to the CodeSandbox. Fork it to your account by clicking Fork in the top menu.
 2. That's it! CodeSandbox features HMR, a console, and a test runner. It's pretty awesome. 😍 If you see an error message, don't worry - it's because we haven't built our server yet.
@@ -34,14 +34,19 @@ $ open http://localhost:4000
 
 ### Branches
 
-If you get stuck at any time, click the sandbox for the exercise you want and fork it. Every step has a problem and solution branch.
+If you get stuck at any time, click the sandbox for the exercise you want and fork it. Most steps have a solution branch.
 
 - [`00-tour`](https://codesandbox.io/s/github/mstuart/xoom-graphql-workshop/tree/00-tour): Tour of Apollo Server
-- [`01-apollo-server`](https://codesandbox.io/s/github/mstuart/xoom-graphql-workshop/tree/01-apollo-server): Setting up Apollo Server
-- [`02-schema`](https://codesandbox.io/s/github/mstuart/xoom-graphql-workshop/tree/02-schema): Writing your schema
-- [`03-data-sources`](https://codesandbox.io/s/github/mstuart/xoom-graphql-workshop/tree/03-data-sources): Building data sources
-- [`04-authentication`](https://codesandbox.io/s/github/mstuart/xoom-graphql-workshop/tree/04-authentication): Implementing authentication
-- [`05-final`](https://codesandbox.io/s/github/mstuart/xoom-graphql-workshop): Hooking everything up to resolvers
+- [`01-resolver-practice`](https://codesandbox.io/s/github/mstuart/xoom-graphql-workshop/tree/01-resolver-practice): Practice with resolvers
+- [`01-resolver-practice-solution`](https://codesandbox.io/s/github/mstuart/xoom-graphql-workshop/tree/01-resolver-practice-solution): Solution: Practice with resolvers
+- [`02-arguments`](https://codesandbox.io/s/github/mstuart/xoom-graphql-workshop/tree/02-arguments): Optional and required arguments
+- [`02-arguments-solution`](https://codesandbox.io/s/github/mstuart/xoom-graphql-workshop/tree/02-arguments-solution): Solution: Optional and required arguments
+- [`03-deprecated`](https://codesandbox.io/s/github/mstuart/xoom-graphql-workshop/tree/03-deprecated): Deprecating fields
+- [`03-deprecated-solution`](https://codesandbox.io/s/github/mstuart/xoom-graphql-workshop/tree/03-deprecated-solution): Solution: Deprecating fields
+- [`04-deduping`](https://codesandbox.io/s/github/mstuart/xoom-graphql-workshop/tree/04-deduping): Deduping data fetching
+- [`04-deduping-solution`](https://codesandbox.io/s/github/mstuart/xoom-graphql-workshop/tree/04-deduping-solution): Solution: Deduping data fetching
+- [`05-apollo-data-sources`](https://codesandbox.io/s/github/mstuart/xoom-graphql-workshop/tree/05-apollo-data-sources): Apollo data sources
+- [`06-large-project-structure`](https://codesandbox.io/s/github/mstuart/xoom-graphql-workshop/tree/06-large-project-structure): Large project structure
 
 ### Helpful links
 
