@@ -1,6 +1,7 @@
 module.exports = `
   type Query {
     movies: [Movie]!
+    movie(id: ID): Movie!
   }
 
   type Movie {
