@@ -1,9 +1,19 @@
 const { ApolloServer } = require('apollo-server');
 const axios = require('axios');
+const https = require('https');
+
+// *NOTE* "dataloader" is a new dependency
+// So, you will need to `npm install` before running this file.
 const DataLoader = require('dataloader');
 
 const client = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com'
+  baseURL: 'https://jsonplaceholder.typicode.com',
+
+  // May get SSL errors w/ depending on your network,
+  // so we will ignore any SSL errors for now.
+  httpsAgent: new https.Agent({
+    rejectUnauthorized: false
+  })
 });
 
 const get = url => {
@@ -18,15 +28,15 @@ const dataLoader = new DataLoader(urls =>
 const typeDefs = `
   type Query {
     # Returns all albums
-    albums(albumId: ID, userId: ID): [Album]
+    albums(id: ID, userId: ID): [Album]
 
-    # Find an album with a certain albumId
-    album(albumId: ID!): Album
+    # Find an album with a certain id
+    album(id: ID!): Album
   }
 
   type Album {
     # The Album's ID
-    albumId: ID
+    id: ID
 
     # The title of the album (Ex: "Nevermind")
     title: String
@@ -103,11 +113,11 @@ const typeDefs = `
 
 const resolvers = {
   Query: {
-    albums: async (rootObj, { albumId, userId }) => {
+    albums: async (rootObj, { id, userId }) => {
       const albums = await dataLoader.load('/albums');
 
-      if (albumId) {
-        return albums.filter(album => album.id === Number(albumId));
+      if (id) {
+        return albums.filter(album => album.id === Number(id));
       }
 
       if (userId) {
@@ -117,16 +127,10 @@ const resolvers = {
       return albums;
     },
 
-    album: async (rootObj, { albumId }) => {
-      const albums = await dataLoader.load('/albums');
-
-      return albums.find(album => album.id === Number(albumId));
-    }
+    album: async (rootObj, { id }) => await dataLoader.load(`/albums/${id}`)
   },
 
   Album: {
-    albumId: ({ id }) => id,
-
     user: async ({ userId }) => await dataLoader.load(`/users/${userId}`)
   },
 
