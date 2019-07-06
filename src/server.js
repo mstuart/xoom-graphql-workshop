@@ -1,8 +1,15 @@
 const { ApolloServer } = require('apollo-server');
 const axios = require('axios');
+const https = require('https');
 
 const client = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com'
+  baseURL: 'https://jsonplaceholder.typicode.com',
+
+  // May get SSL errors w/ depending on your network,
+  // so we will ignore any SSL errors for now.
+  httpsAgent: new https.Agent({
+    rejectUnauthorized: false
+  })
 });
 
 const get = async url => client.get(url).then(({ data }) => data);
@@ -12,11 +19,14 @@ const typeDefs = `
     # A list of albums. See Album type
     albums: [Album]
   }
+
   type Album {
     # The Album's ID
-    albumId: ID
+    id: ID
+
     # The User ID that is associated this album
     userId: ID
+
     # The title of the album (Ex: "Nevermind")
     title: String
   }
@@ -35,15 +45,9 @@ const resolvers = {
 
     // EXERCISE #1 -- Currently, we're returning the entire list of albums
     //
-    // It's likely that our clients may want a single album with a given albumId.
+    // It's likely that our clients may want a single album with a given ID.
     // Let's create another field called "album" that takes a required parameter
-    // called "albumId" that returns that particular Album.
-  },
-
-  Album: {
-    // Here we're picking out the "id" property from Query.albums above.
-    // Our schema references the album ID as "albumId", not "id"
-    albumId: ({ id }) => id
+    // called "id" that returns that particular Album.
   }
 };
 
