@@ -4,15 +4,15 @@ const JSONPlaceholderAPI = require('./JSONPlaceholderAPI');
 const typeDefs = `
   type Query {
     # Returns all albums
-    albums(albumId: ID, userId: ID): [Album]
+    albums(id: ID, userId: ID): [Album]
 
-    # Find an album with a certain albumId
-    album(albumId: ID!): Album
+    # Find an album with a certain id
+    album(id: ID!): Album
   }
 
   type Album {
     # The Album's ID
-    albumId: ID
+    id: ID
 
     # The title of the album (Ex: "Nevermind")
     title: String
@@ -89,11 +89,11 @@ const typeDefs = `
 
 const resolvers = {
   Query: {
-    albums: async (rootObj, { albumId, userId }, { dataSources }) => {
+    albums: async (rootObj, { id, userId }, { dataSources }) => {
       const albums = await dataSources.jsonPlaceholderAPI.getAlbums();
 
-      if (albumId) {
-        return albums.filter(album => album.id === Number(albumId));
+      if (id) {
+        return albums.filter(album => album.id === Number(id));
       }
 
       if (userId) {
@@ -103,16 +103,11 @@ const resolvers = {
       return albums;
     },
 
-    album: async (rootObj, { albumId }, { dataSources }) => {
-      const albums = await dataSources.jsonPlaceholderAPI.getAlbums();
-
-      return albums.find(album => album.id === Number(albumId));
-    }
+    album: async (rootObj, { id }, { dataSources }) =>
+      await dataSources.jsonPlaceholderAPI.getAlbumById(id)
   },
 
   Album: {
-    albumId: ({ id }) => id,
-
     user: async ({ userId }, args, { dataSources }) =>
       await dataSources.jsonPlaceholderAPI.getUserById(userId)
   },
