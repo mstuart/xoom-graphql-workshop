@@ -1,10 +1,10 @@
 module.exports = {
   Query: {
-    albums: async (rootObj, { albumId, userId }, { dataSources }) => {
+    albums: async (rootObj, { id, userId }, { dataSources }) => {
       const albums = await dataSources.jsonPlaceholderAPI.getAlbums();
 
-      if (albumId) {
-        return albums.filter(album => album.id === Number(albumId));
+      if (id) {
+        return albums.filter(album => album.id === Number(id));
       }
 
       if (userId) {
@@ -14,10 +14,7 @@ module.exports = {
       return albums;
     },
 
-    album: async (rootObj, { albumId }, { dataSources }) => {
-      const albums = await dataSources.jsonPlaceholderAPI.getAlbums();
-
-      return albums.find(album => album.id === Number(albumId));
-    }
+    album: async (rootObj, { id }, { dataSources }) =>
+      await dataSources.jsonPlaceholderAPI.getAlbumById(id)
   }
 };

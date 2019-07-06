@@ -1,7 +1,7 @@
 type Query {
   # Returns all albums
-  albums(albumId: ID, userId: ID): [Album]
+  albums(id: ID, userId: ID): [Album]
 
-  # Find an album with a certain albumId
-  album(albumId: ID!): Album
+  # Find an album with a certain id
+  album(id: ID!): Album
 }

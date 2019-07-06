@@ -1,6 +1,6 @@
 type Album {
   # The Album's ID
-  albumId: ID
+  id: ID
 
   # The title of the album (Ex: "Nevermind")
   title: String
