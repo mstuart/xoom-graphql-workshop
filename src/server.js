@@ -1,8 +1,15 @@
 const { ApolloServer } = require('apollo-server');
 const axios = require('axios');
+const https = require('https');
 
 const client = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com'
+  baseURL: 'https://jsonplaceholder.typicode.com',
+
+  // May get SSL errors w/ depending on your network,
+  // so we will ignore any SSL errors for now.
+  httpsAgent: new https.Agent({
+    rejectUnauthorized: false
+  })
 });
 
 const get = async url => client.get(url).then(({ data }) => data);
@@ -11,14 +18,18 @@ const typeDefs = `
   type Query {
     # Returns all albums
     albums: [Album]
-    # Find an album with a certain albumId
-    album(albumId: ID!): Album
+
+    # Find an album with a certain id
+    album(id: ID!): Album
   }
+
   type Album {
     # The Album's ID
-    albumId: ID
+    id: ID
+
     # The User ID that is associated this album
     userId: ID
+
     # The title of the album (Ex: "Nevermind")
     title: String
   }
@@ -27,24 +38,20 @@ const typeDefs = `
 const resolvers = {
   Query: {
     // EXERCISE #2 -- Okay, so we have a way to fetch all of the Albums and
-    // a single Album.  What if our clients wanted to grab a subset of
-    // Albums that match any of the fields like "albumId" or "userId"
+    // a single Album.
+    //
+    // What if our clients wanted to grab a subset of
+    // Albums that match any of the fields like "id" or "userId"
     // Ex: If they're building a pagination or search UI
     //
-    // Let's add two *optional* parameters that filters based on "userId" or "albumId"
+    // Let's add two *optional* parameters to "albums"
+    // that filters based on "id" or "userId"
     // NOTE: Optional, not required.
-    // We still want people to be able to fetch all of the albums if they want to.
+    //
+    // Also, we still want people to be able to fetch all of the albums if they want to.
     albums: async () => await get('/albums'),
 
-    album: async (rootObj, { albumId }) => {
-      const albums = await get('/albums');
-
-      return albums.find(album => album.id === Number(albumId));
-    }
-  },
-
-  Album: {
-    albumId: ({ id }) => id
+    album: async (rootObj, { id }) => await get(`/albums/${id}`)
   }
 };
 
