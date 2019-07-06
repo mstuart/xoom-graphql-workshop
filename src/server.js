@@ -1,8 +1,15 @@
 const { ApolloServer } = require('apollo-server');
 const axios = require('axios');
+const https = require('https');
 
 const client = axios.create({
-  baseURL: 'https://jsonplaceholder.typicode.com'
+  baseURL: 'https://jsonplaceholder.typicode.com',
+
+  // May get SSL errors w/ depending on your network,
+  // so we will ignore any SSL errors for now.
+  httpsAgent: new https.Agent({
+    rejectUnauthorized: false
+  })
 });
 
 const get = async url => client.get(url).then(({ data }) => data);
@@ -12,12 +19,13 @@ const typeDefs = `
     # Returns all albums
     albums: [Album]
 
-    # Find an album with a certain albumId
-    album(albumId: ID!): Album
+    # Find an album with a certain id
+    album(id: ID!): Album
   }
+
   type Album {
     # The Album's ID
-    albumId: ID
+    id: ID
 
     # The User ID that is associated this album
     userId: ID
@@ -31,21 +39,7 @@ const resolvers = {
   Query: {
     albums: async () => await get('/albums'),
 
-    album: async (rootObj, { albumId }) => {
-      const albums = await get('/albums');
-
-      // We're using Array#find to search through the albums Array to find
-      // the album that has this albumId.  Otherwise, we're returning null.
-      //
-      // NOTE: The ID scalar in GraphQL can either be a String or Number.
-      // In our schema, "albumID" is an ID, so we need to cast albumId to
-      // a Number before comparing it.
-      return albums.find(album => album.id === Number(albumId));
-    }
-  },
-
-  Album: {
-    albumId: ({ id }) => id
+    album: async (rootObj, { id }) => await get(`/albums/${id}`)
   }
 };
 
