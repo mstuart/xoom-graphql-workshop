@@ -1,6 +1,4 @@
 const path = require('path');
-// *NOTE* "merge-graphql-schemas" is a new dependency
-// You need to "npm install" before running the server
 const {
   fileLoader,
   mergeResolvers,
