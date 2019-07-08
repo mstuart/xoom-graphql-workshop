@@ -1,5 +1,3 @@
-// NOTE: "apollo-datasource-rest" is a new dependency
-// You need to "npm install" before running the server.
 const { RESTDataSource } = require('apollo-datasource-rest');
 const https = require('https');
 
