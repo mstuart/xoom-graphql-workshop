@@ -21,7 +21,7 @@ In this session, we will build a GraphQL server based on the [Movie DB REST API]
 
 ```
 $ git clone https://github.com/mstuart/xoom-graphql-workshop.git
-$ cd graphql-workshop
+$ cd xoom-graphql-workshop
 $ npm install
 ```
 
