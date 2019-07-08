@@ -20,7 +20,7 @@ In this session, we will build a GraphQL server based on the [Movie DB REST API]
 2. Clone, install, and run the server
 
 ```
-$ git clone https://github.com/mstuart/graphql-workshop.git
+$ git clone https://github.com/mstuart/xoom-graphql-workshop.git
 $ cd graphql-workshop
 $ npm install
 ```
@@ -67,14 +67,14 @@ If you get stuck at any time, click the sandbox for the exercise you want and fo
 [license-badge]: https://img.shields.io/github/license/mashape/apistatus.svg
 [prs-badge]: https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square
 [prs]: http://makeapullrequest.com
-[github-watch-badge]: https://img.shields.io/github/watchers/mstuart/graphql-workshop.svg?style=social
-[github-watch]: https://github.com/mstuart/graphql-workshop/watchers
-[github-star-badge]: https://img.shields.io/github/stars/mstuart/graphql-workshop.svg?style=social
-[github-star]: https://github.com/mstuart/graphql-workshop/stargazers
-[twitter]: https://twitter.com/intent/tweet?text=Check%20out%20graphql-workshop%20by%20@mstuart%20https://github.com/mstuart/graphql-workshop%20%F0%9F%91%8D
-[twitter-badge]: https://img.shields.io/twitter/url/https/github.com/mstuart/graphql-workshop.svg?style=social
+[github-watch-badge]: https://img.shields.io/github/watchers/mstuart/xoom-graphql-workshop.svg?style=social
+[github-watch]: https://github.com/mstuart/xoom-graphql-workshop/watchers
+[github-star-badge]: https://img.shields.io/github/stars/mstuart/xoom-graphql-workshop.svg?style=social
+[github-star]: https://github.com/mstuart/xoom-graphql-workshop/stargazers
+[twitter]: https://twitter.com/intent/tweet?text=Check%20out%20graphql-workshop%20by%20@mstuart%20https://github.com/mstuart/xoom-graphql-workshop%20%F0%9F%91%8D
+[twitter-badge]: https://img.shields.io/twitter/url/https/github.com/mstuart/xoom-graphql-workshop.svg?style=social
 [win-path]: https://www.howtogeek.com/118594/how-to-edit-your-system-path-for-easy-command-line-access/
 [mac-path]: http://stackoverflow.com/a/24322978/971592
-[issue]: https://github.com/mstuart/graphql-workshop/issues/new
-[win-build-badge]: https://img.shields.io/appveyor/ci/mstuart/graphql-workshop.svg?style=flat-square&logo=appveyor
-[win-build]: https://ci.appveyor.com/project/mstuart/graphql-workshop
+[issue]: https://github.com/mstuart/xoom-graphql-workshop/issues/new
+[win-build-badge]: https://img.shields.io/appveyor/ci/mstuart/xoom-graphql-workshop.svg?style=flat-square&logo=appveyor
+[win-build]: https://ci.appveyor.com/project/mstuart/xoom-graphql-workshop
