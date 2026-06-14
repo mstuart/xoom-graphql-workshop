@@ -3,7 +3,7 @@
   "description": "GraphQL Workshop at Xoom - July 8-9, 2019",
   "dependencies": {
     "apollo-datasource": "^3.3.2",
-    "apollo-datasource-rest": "^0.4.0",
+    "apollo-datasource-rest": "^3.7.0",
     "apollo-server": "^3.13.0",
     "axios": "^1.17.0",
     "dataloader": "^1.4.0",
