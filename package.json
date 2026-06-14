@@ -6,7 +6,7 @@
     "apollo-datasource-rest": "^3.7.0",
     "apollo-server": "^3.13.0",
     "axios": "^1.17.0",
-    "dataloader": "^1.4.0",
+    "dataloader": "^2.2.3",
     "graphql": "^16.14.2",
     "merge-graphql-schemas": "^1.7.8"
   },
