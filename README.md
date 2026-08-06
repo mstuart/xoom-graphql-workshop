@@ -1,5 +1,14 @@
-# xoom-graphql-workshop <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/GraphQL_Logo.svg/1024px-GraphQL_Logo.svg.png" width="50">
+<div align="center">
+  <img src="docs/assets/logo.svg" alt="xoom-graphql-workshop — ⚡GraphQL Workshop @ Xoom -- Spring 2019 🏎️" width="720">
+</div>
 
+<p align="center"><strong>⚡GraphQL Workshop @ Xoom -- Spring 2019 🏎️</strong></p>
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/xoom-graphql-workshop"><img src="https://img.shields.io/npm/v/xoom-graphql-workshop?label=npm" alt="npm"></a>
+</p>
+
+---
 [![PRs Welcome][prs-badge]][prs]
 [![Watch on GitHub][github-watch-badge]][github-watch]
 [![Star on GitHub][github-star-badge]][github-star]
