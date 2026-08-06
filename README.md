@@ -5,6 +5,7 @@
 <p align="center"><strong>⚡GraphQL Workshop @ Xoom -- Spring 2019 🏎️</strong></p>
 
 <p align="center">
+  <a href="https://github.com/mstuart/xoom-graphql-workshop/actions/workflows/ci.yml"><img src="https://github.com/mstuart/xoom-graphql-workshop/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <a href="https://www.npmjs.com/package/xoom-graphql-workshop"><img src="https://img.shields.io/npm/v/xoom-graphql-workshop?label=npm" alt="npm"></a>
 </p>
 
